@@ -4,9 +4,9 @@
 #include <QDialog>
 #include <QSerialPort>
 
-//QT_USE_NAMESPACE
+QT_USE_NAMESPACE
 
-//QT_BEGIN_NAMESPACE
+QT_BEGIN_NAMESPACE
 
 namespace Ui {
 class SettingsDialog;
@@ -14,15 +14,11 @@ class SettingsDialog;
 
 class QIntValidator;
 
-//QT_END_NAMESPACE
+QT_END_NAMESPACE
 
 class SettingsDialog : public QDialog
 {
     Q_OBJECT
-
-public:
-    explicit SettingsDialog(QWidget *parent = 0);
-    ~SettingsDialog();
 
 public:
     struct Settings {
@@ -40,19 +36,22 @@ public:
         bool localEchoEnabled;
     };
 
-private:
-    void fillPortsParameters();
-    void updateSettings();
+    explicit SettingsDialog(QWidget *parent = 0);
+    ~SettingsDialog();
+        Settings settings() const;
 
 private slots:
     void checkCustomBaudRatePolicy(int index);
     void apply();
-  //  void example(int k);
+    void showPortInfo(int idx);
 
+private:
+    void fillPortsParameters();
+    void updateSettings();
+    void fillPortsInfo();
 
 private:
     Ui::SettingsDialog *ui;
-
     Settings currentSettings;
     QIntValidator *intValidator;
 };

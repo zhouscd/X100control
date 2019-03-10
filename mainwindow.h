@@ -28,8 +28,10 @@ public:
     ~MainWindow();
 
 private slots:
+    void about();
 
-
+private:
+    void initActionsConnections();
 
 private:
     Ui::MainWindow *ui;

@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>Select serial port</string>
   </property>
-  <widget class="QGroupBox" name="groupBox">
+  <widget class="QGroupBox" name="selectBox">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -31,7 +31,7 @@
    <property name="title">
     <string>Select Serial Port</string>
    </property>
-   <widget class="QComboBox" name="selectBox">
+   <widget class="QComboBox" name="serialPortInfoListBox">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -66,7 +66,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="SerialNamberLabel">
+      <widget class="QLabel" name="SerialNumberLabel">
        <property name="text">
         <string>Serial number:</string>
        </property>
