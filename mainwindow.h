@@ -5,8 +5,6 @@
 #include <QtCore/QtGlobal>
 #include  <QtSerialPort/QSerialPort>
 
-//SUKA!
-
 QT_BEGIN_NAMESPACE
 
 namespace Ui {
@@ -16,7 +14,7 @@ class MainWindow;
 QT_END_NAMESPACE
 
 
-
+class Console;
 class SettingsDialog;
 
 class MainWindow : public QMainWindow
@@ -28,18 +26,22 @@ public:
     ~MainWindow();
 
 private slots:
+    void openSerialPort();
+    void closeSerialPort();
     void about();
+    void writeData(const QByteArray &data);
+    void readData();
+
+    void handleError(QSerialPort::SerialPortError error);
 
 private:
     void initActionsConnections();
 
 private:
     Ui::MainWindow *ui;
-
-    //del?
+    Console *console;
     SettingsDialog *settings;
-    QSerialPort *serial1;
-    //
+    QSerialPort *serial;
 };
 
 #endif // MAINWINDOW_H

@@ -20,6 +20,8 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     ui->localEchoCheckBox->setChecked(true);
     intValidator = new QIntValidator(0,4000000,this);
 
+    ui->baudRateBox->setInsertPolicy(QComboBox::NoInsert);
+
     connect(ui->baudRateBox,SIGNAL(currentIndexChanged(int)),
             this, SLOT(checkCustomBaudRatePolicy(int)));
 
@@ -37,6 +39,13 @@ SettingsDialog::~SettingsDialog()
 {
     delete ui;
 }
+
+
+SettingsDialog::Settings SettingsDialog::settings() const
+{
+    return currentSettings;
+}
+
 
 void SettingsDialog::fillPortsParameters()
 {
