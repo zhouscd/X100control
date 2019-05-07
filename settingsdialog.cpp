@@ -50,10 +50,10 @@ SettingsDialog::Settings SettingsDialog::settings() const
 void SettingsDialog::fillPortsParameters()
 {
     //Filling QCombo Box for choosing BaudRate
+    ui->baudRateBox->addItem("115200",QSerialPort::Baud115200);
     ui->baudRateBox->addItem("9600",QSerialPort::Baud9600);
     ui->baudRateBox->addItem("38400",QSerialPort::Baud38400);
     ui->baudRateBox->addItem("57600",QSerialPort::Baud57600);
-    ui->baudRateBox->addItem("115200",QSerialPort::Baud115200);
     ui->baudRateBox->addItem("Custom");
 
     //Filling QCombo Box for choosing Data Bits

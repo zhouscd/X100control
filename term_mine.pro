@@ -36,3 +36,5 @@ FORMS += \
 
 RESOURCES += \
     myresource.qrc
+
+QMAKE_CFLAGS += -std=c99

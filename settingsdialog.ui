@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>345</width>
+    <width>582</width>
     <height>331</height>
    </rect>
   </property>
@@ -24,7 +24,7 @@
     <rect>
      <x>10</x>
      <y>20</y>
-     <width>121</width>
+     <width>301</width>
      <height>211</height>
     </rect>
    </property>
@@ -46,7 +46,7 @@
      <rect>
       <x>10</x>
       <y>70</y>
-      <width>91</width>
+      <width>271</width>
       <height>110</height>
      </rect>
     </property>
@@ -99,7 +99,7 @@
   <widget class="QGroupBox" name="ParametersBox">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>340</x>
      <y>20</y>
      <width>201</width>
      <height>211</height>
@@ -224,6 +224,9 @@
     <string>Additional options</string>
    </property>
    <widget class="QCheckBox" name="localEchoCheckBox">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>

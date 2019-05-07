@@ -5,5 +5,11 @@
         <file>img/connect.png</file>
         <file>img/disconnect.png</file>
         <file>img/settings.png</file>
+        <file>img/led-off.png</file>
+        <file>img/led-ON.png</file>
+        <file>img/Rvbust.png</file>
+        <file>img/motor.png</file>
+        <file>img/Capture.png</file>
+        <file>img/stop.png</file>
     </qresource>
 </RCC>

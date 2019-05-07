@@ -4,7 +4,8 @@
 #include <QMainWindow>
 #include <QtCore/QtGlobal>
 #include  <QtSerialPort/QSerialPort>
-
+#include <stdio.h>
+#include <string.h>
 QT_BEGIN_NAMESPACE
 
 namespace Ui {
@@ -22,10 +23,19 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
+    void led_on();
+    void led_off();
+    void StepperMotor0_up();
+    void StepperMotor2_up();
+    void StepperMotor0_down();
+    void StepperMotor2_down();
+    void Capture();
+    void Stop();
+    void msg_send(QByteArray &data);
     void openSerialPort();
     void closeSerialPort();
     void about();
