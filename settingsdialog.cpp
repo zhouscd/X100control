@@ -169,3 +169,9 @@ void SettingsDialog::fillPortsInfo() {
         ui->serialPortInfoListBox->addItem(list.first(), list);
     }
 }
+
+
+void SettingsDialog::on_pushButton_clicked()
+{
+    fillPortsInfo();
+}

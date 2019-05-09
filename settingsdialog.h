@@ -36,7 +36,7 @@ public:
         bool localEchoEnabled;
     };
 
-    explicit SettingsDialog(QWidget *parent = 0);
+    explicit SettingsDialog(QWidget *parent = nullptr);
     ~SettingsDialog();
         Settings settings() const;
 
@@ -44,6 +44,9 @@ private slots:
     void checkCustomBaudRatePolicy(int index);
     void apply();
     void showPortInfo(int idx);
+
+
+    void on_pushButton_clicked();
 
 private:
     void fillPortsParameters();

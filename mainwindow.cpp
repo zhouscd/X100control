@@ -15,17 +15,18 @@
 #define PKG_HEAD_CHAR       0xAA
 #define PKG_TAIL_CHAR       0xA5
 #define PKG_CHECKSUM_MARK   0xE0
-typedef unsigned char uchar;
+
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    MainWindow::setWindowTitle(tr("your title"));
     ui->setupUi(this);
     console = new Console;
     console->setEnabled(false);
-    setCentralWidget(console);
+
+    ui->consoleLayout->addWidget(console);
 
     serial = new QSerialPort(this);
     settings = new SettingsDialog;
@@ -88,22 +89,23 @@ void MainWindow::openSerialPort()
     serial->setStopBits(p.stopBits);
     serial->setFlowControl(p.flowControl);
     if (serial->open(QIODevice::ReadWrite)) {
-            console->setEnabled(true);
-            console->setLocalEchoEnabled(p.localEchoEnabled);
-            ui->actionConnect->setEnabled(false);
-            ui->actionDisconnect->setEnabled(true);
-            ui->actionConfigure->setEnabled(false);
-            ui->actionLED_ON->setEnabled(true);
-            ui->actionLED_OFF->setEnabled(true);
-            ui->actionStepperMotor0_up->setEnabled(true);
-            ui->actionStepperMotor2_up->setEnabled(true);
-            ui->actionStepperMotor0_down->setEnabled(true);
-            ui->actionStepperMotor2_down->setEnabled(true);
-            ui->actionCapture->setEnabled(true);
-            ui->actionStop->setEnabled(true);
-            ui->statusBar->showMessage(tr("Connected to %1 : %2, %3, %4, %5, %6")
-                                       .arg(p.name).arg(p.stringBaudRate).arg(p.stringDataBits)
-                                       .arg(p.stringParity).arg(p.stringStopBits).arg(p.stringFlowControl));
+        g_isSerialOpen = true;
+        //console->setEnabled(true);
+        //console->setLocalEchoEnabled(p.localEchoEnabled);
+        ui->actionConnect->setEnabled(false);
+        ui->actionDisconnect->setEnabled(true);
+        ui->actionConfigure->setEnabled(false);
+        ui->actionLED_ON->setEnabled(true);
+        ui->actionLED_OFF->setEnabled(true);
+        ui->actionStepperMotor0_up->setEnabled(true);
+        ui->actionStepperMotor2_up->setEnabled(true);
+        ui->actionStepperMotor0_down->setEnabled(true);
+        ui->actionStepperMotor2_down->setEnabled(true);
+        ui->actionCapture->setEnabled(true);
+        ui->actionStop->setEnabled(true);
+        ui->statusBar->showMessage(tr("Connected to %1 : %2, %3, %4, %5, %6")
+                                   .arg(p.name).arg(p.stringBaudRate).arg(p.stringDataBits)
+                                   .arg(p.stringParity).arg(p.stringStopBits).arg(p.stringFlowControl));
     } else {
         QMessageBox::critical(this, tr("Error"), serial->errorString());
 
@@ -112,6 +114,7 @@ void MainWindow::openSerialPort()
 }
 
 void MainWindow::closeSerialPort() {
+    g_isSerialOpen = false;
     serial->close();
     console->setEnabled(false);
     ui->actionConnect->setEnabled(true);
@@ -237,6 +240,27 @@ void MainWindow::Stop()
 {
     qDebug("Stop.\n");
     QByteArray data("{\"cmd\":5,\"loop\":0}");
+    console->putData("msg_send:");
+    console->putData(data);
+    console->putData("\n");
+    msg_send(data);
+}
+
+void MainWindow::on_Capture_cmd_clicked()
+{
+    qDebug("on_Capture_cmd_clicked.\n");
+    if(g_isSerialOpen != true)
+        return;
+    Stop();
+    QByteArray data("{\"cmd\":5,\"oid\":0,\"cid\":0,\"imgs\":[");
+    data.append(ui->imgs_Edit->text());
+    data.append("],\"num\":");
+    data.append(ui->num_spinBox->text());
+    data.append(",\"loop\":");
+    data.append(ui->loop_spinBox->text());
+    data.append(",\"step\":");
+    data.append(ui->step_spinBox->text());
+    data.append("}");
     console->putData("msg_send:");
     console->putData(data);
     console->putData("\n");

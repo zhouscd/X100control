@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>524</width>
-    <height>444</height>
+    <width>569</width>
+    <height>389</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -23,13 +23,91 @@
    <iconset resource="myresource.qrc">
     <normaloff>:/img/img/Rvbust.png</normaloff>:/img/img/Rvbust.png</iconset>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="4">
+     <widget class="QLabel" name="loop">
+      <property name="text">
+       <string>loop</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="imgs_Edit">
+      <property name="text">
+       <string>1,2,3,4</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="6">
+     <widget class="QLabel" name="step">
+      <property name="text">
+       <string>step</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="8">
+     <widget class="QPushButton" name="Capture_cmd">
+      <property name="text">
+       <string>send</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="num">
+      <property name="text">
+       <string>num</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QSpinBox" name="loop_spinBox">
+      <property name="minimum">
+       <number>-1</number>
+      </property>
+      <property name="value">
+       <number>-1</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="7">
+     <widget class="QSpinBox" name="step_spinBox">
+      <property name="minimum">
+       <number>-1</number>
+      </property>
+      <property name="value">
+       <number>-1</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="imgs">
+      <property name="text">
+       <string>Capture CMD: imgs</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QSpinBox" name="num_spinBox">
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="value">
+       <number>4</number>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="9">
+     <layout class="QVBoxLayout" name="consoleLayout"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>524</width>
+     <width>569</width>
      <height>23</height>
     </rect>
    </property>

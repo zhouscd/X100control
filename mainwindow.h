@@ -44,6 +44,8 @@ private slots:
 
     void handleError(QSerialPort::SerialPortError error);
 
+    void on_Capture_cmd_clicked();
+
 private:
     void initActionsConnections();
 
@@ -52,6 +54,7 @@ private:
     Console *console;
     SettingsDialog *settings;
     QSerialPort *serial;
+    bool g_isSerialOpen = false;
 };
 
 #endif // MAINWINDOW_H
